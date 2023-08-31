@@ -27,19 +27,17 @@ export class CreateOrderComponent {
   orderListForm!: FormGroup
   productList: any = []
   getOrderDetail: any
-  text: string = 'hello'
   getOrder: any = []
   updateArray: any = []
   totalAmount: any
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
+    this.formInit()
     this.getAllOrder()
     this.addOrder()
-    console.log('user', this.user)
-    console.log('user5465', this.getOrder)
-    this.formInit()
   }
+
   formInit() {
     this.orderListForm = this.fb.group({
       customerName: [''],
@@ -72,15 +70,13 @@ export class CreateOrderComponent {
 
   onChanges(change: SimpleChange) {
     if (change) {
-      console.log('=-=-=-=-=-=change', change)
-
       let a: any = localStorage.getItem('productList') || []
       this.productList = JSON.parse(a)
     }
   }
 
   get orders(): FormArray {
-    return this.orderListForm?.get('orders') as FormArray
+    return this.orderListForm.get('orders') as FormArray
   }
 
   showDialog() {
@@ -95,13 +91,13 @@ export class CreateOrderComponent {
       price: [''],
       id: [this.getOrder?.length],
     })
-    console.log("this.orders?",this.orders);
-    
+    console.log('this.orders?', this.orders)
+
     this.orders?.push(orderField)
   }
 
   removeOrder(i: number) {
-    this.orders.removeAt(i)
+    this.orders?.removeAt(i)
   }
   onSubmit() {
     console.log('=-=-=-=-=-', this.orderListForm.value)
