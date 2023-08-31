@@ -48,9 +48,9 @@ export class CreateOrderComponent {
 
   getAllOrder() {
     let localDataForProduct: any = localStorage.getItem('productList') || []
-    this.productList = localDataForProduct
+    this.productList = JSON.parse(localDataForProduct)
     let localDataForOrder: any = localStorage.getItem('orderList') || []
-    this.getOrderDetail = localDataForOrder
+    this.getOrderDetail = JSON.parse(localDataForOrder)
     this.getOrder = this.getOrderDetail.orders
 
     this.updateArray = this.getOrderDetail?.orders?.map(
@@ -93,7 +93,7 @@ export class CreateOrderComponent {
     })
     console.log('this.orders?', this.orders)
 
-    this.orders?.push(orderField)
+    this.orders.push(orderField)
   }
 
   removeOrder(i: number) {
