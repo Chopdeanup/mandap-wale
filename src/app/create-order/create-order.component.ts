@@ -52,7 +52,7 @@ export class CreateOrderComponent {
     this.getOrderDetail =localDataForOrder
     this.getOrder = this.getOrderDetail.orders
 
-    this.updateArray = this.getOrderDetail.orders?.map(
+    this.updateArray = this.getOrderDetail?.orders?.map(
       (item: any, index: number) => {
         return {
           ...item,
@@ -156,7 +156,6 @@ export class CreateOrderComponent {
    
       const pdfFile = new Blob([final], { type: 'application/pdf' })
       const blobUrl = URL.createObjectURL(pdfFile)
-      const pdfUrl = URL.createObjectURL(pdfFile)
     
       const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(
         blobUrl,
