@@ -153,30 +153,15 @@ export class CreateOrderComponent {
       let final: any = pdf.output('blob')
 
       this.pdfUrl = URL.createObjectURL(final)
-      // const blobUrl = URL.createObjectURL(final)
-      // console.log('mmmmmmmmm', blobUrl)
-
-      // const downloadLink = document.createElement('a');
-      // downloadLink.href = this.pdfUrl;
-
+   
       const pdfFile = new Blob([final], { type: 'application/pdf' })
       const blobUrl = URL.createObjectURL(pdfFile)
-
-      // const pdfBlob = new Blob([/* Provide the Blob data here */], { type: 'application/pdf' });
-
-      // const formData = new FormData();
-      // formData.append('document', pdfFile, pdfFile.name);
       const pdfUrl = URL.createObjectURL(pdfFile)
-      const whatsappMessage = `Check out this PDF! `
+    
       const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(
         blobUrl,
-      )}&attachment=${encodeURIComponent(blobUrl)}`
+      )}`
 
-      // Open WhatsApp with the generated PDF file attached
-      // window.location.href = whatsappUrl;
-      // const whatsappMessage = 'Download the PDF: ' + blobUrl;
-
-      // const whatsappShareUrl = `whatsapp://send?text=${encodeURIComponent(blobUrl)}`;
 
       window.open(whatsappUrl)
     })
