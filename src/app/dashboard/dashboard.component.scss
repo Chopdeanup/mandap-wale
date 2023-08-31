@@ -1,0 +1,44 @@
+.navbar {
+  padding: 1%;
+  background: linear-gradient(
+    to left top,
+    #d16ba5,
+    #c777b9,
+    #ba83ca,
+    #aa8fd8,
+    #9a9ae1,
+    #8aa7ec,
+    #79b3f4,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
+  );
+
+  .logo {
+    padding: 1%;
+    width: 5%;
+    height: 20%;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #ffff;
+  }
+}
+
+.add-product {
+  margin-top: 1%;
+  padding-left: 1.7%;
+  padding-right: 1.7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  
+  
+}

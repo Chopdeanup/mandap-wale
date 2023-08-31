@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mandap-wale';
+  formGroup: FormGroup | undefined;
+
+    ngOnInit() {
+        this.formGroup = new FormGroup({
+            date: new FormControl<Date | null>(null)
+        });
+    } 
 }

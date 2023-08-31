@@ -1,0 +1,91 @@
+<div class="mx-4 py-5">
+    <h2 class="text-center">Create Order</h2>
+    <div class="text-right mb-4">
+        <p-button label="Get Order" icon="pi pi-plus-circle" (click)="showDialog()"></p-button>
+    </div>
+    <div class="order-view h-auto border-1 m-auto ">
+        <div #pdfContent>
+            <h3 class="text-center">Invoice Detail</h3>
+            <div class=" h-auto mt-5 px-3">
+                <div class="mb-3">
+                    <div class="flex flex-column gap-2">
+                        <p class="font-bold">Customer Name:&nbsp;&nbsp;<span
+                                class="font-normal">{{getOrderDetail.customerName | titlecase}}</span></p>
+                        <p class="font-bold">Customer Address:&nbsp;&nbsp;<span
+                                class="font-normal">{{getOrderDetail.customerAddress |titlecase}}</span></p>
+                    </div>
+
+                </div>
+                <p-table [value]="updateArray">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>No</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product>
+                        <tr>
+                            <td>{{ product?.id}}</td>
+                            <td>{{ product?.selectProduct.productName }}</td>
+                            <td>{{ product?.qty }}</td>
+                            <td>{{ product?.price }}</td>
+                            <td>{{ product?.price * product?.qty }}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                <div class=" mt-2 flex justify-content-end">
+                    <div class="w-9rem text-center">
+                        <p class="font-bold">Total</p>
+                        <p>{{totalAmount}}</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="my-6 flex justify-content-center gap-3">
+            <p-button label="PRINT" (click)="generatePDF()"></p-button>
+            <share-button [button]="'whatsapp'" [url]="pdfUrl" [title]="pdfTitle"  [autoSetMeta]="false">
+                Share on WhatsApp
+            </share-button>
+            <button pButton class="p-button-success" label="SHERE" (click)="sharePDFOnWhatsApp()"></button>
+        </div>
+
+        <!--  -->
+    </div>
+</div>
+
+<p-dialog header="Create Order" [(visible)]="visible" [breakpoints]="{ '960px': '75vw' }"
+    [style]="{ width: '50vw', height: '55vh' }" [draggable]="false" [resizable]="false">
+    <div class="">
+        <form [formGroup]="orderListForm">
+            <div class="mb-1">
+                <input pInputText class="mb-1" style="width: 100%" formControlName="customerName" type="text"
+                    placeholder="Customer Name" />
+                <textarea rows="3" style="width: 100%" pInputTextarea formControlName="customerAddress"
+                    placeholder="Customer Address"></textarea>
+            </div>
+            <div formArrayName="orders">
+                <div *ngFor="let order of orders.controls; let i = index; let l = last">
+                    <div class="flex gap-3 mb-1 justify-content-between" [formGroupName]="i">
+                        <p-dropdown [options]="productList" appendTo="body" [style]="{ width: '30vw' }"
+                            optionLabel="productName" formControlName="selectProduct" type="text"
+                            placeholder="Select Product"></p-dropdown>
+
+                        <input pInputText style="width: 11%" formControlName="qty" type="number" placeholder="Qty" />
+                        <input pInputText style="width: 11%" formControlName="price" type="number"
+                            placeholder="Price" />
+                        <p-button icon="pi pi-plus-circle" (click)="addOrder()" *ngIf="l"></p-button>
+                        <p-button icon="pi pi-minus-circle" (click)="removeOrder(i)" *ngIf="!l"></p-button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <p-button label="Submit" (click)="onSubmit()"></p-button>
+            </div>
+        </form>
+    </div>
+</p-dialog>

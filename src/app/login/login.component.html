@@ -1,0 +1,60 @@
+<div class="parent-box">
+    <div class="login-box">
+        <div class="form-field">
+            <h3>😊 Login Here 😊</h3>
+            <form [formGroup]="loginForm">
+                <div class="card mb-1 p-d-flex p-jc-between">
+                    <div class="flex flex-column">
+                        <input pInputText id="fist-name" formControlName="firstName" type="text"
+                            placeholder="FirstName" />
+                        <div class="error-box">
+                            {{getFieldError('firstName')}}
+                        </div>
+                    </div>
+                    <div class="flex flex-column">
+                        <input pInputText id="last-name" formControlName="lastName" type="text"
+                            placeholder="LastName" />
+                        <div class="error-box">
+                            {{getFieldError('lastName')}}
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-d-flex p-jc-between">
+                    <div class="flex flex-column">
+                        <input pInputText id="email" formControlName="email" type="email" placeholder="Email" />
+                        <div class="error-box">
+                            {{getFieldError('email')}}
+                        </div>
+                    </div>
+                    <div class="flex flex-column">
+                        <input pInputText type="text" formControlName="phone" id="phone" placeholder="Phone" />
+                        <div class="error-box">
+                            {{getFieldError('phone')}}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <input pInputText style="width: 75%" formControlName="firmName" type="text"
+                        placeholder="Firm Name" />
+                    <div class="error-box-firmDetails">
+                        {{getFieldError('firmName')}}
+                    </div>
+                </div>
+                <div class="line-height-1">
+                    <textarea rows="3" style="width: 75%" pInputTextarea formControlName="firmAddress"
+                        placeholder="Firm Address"></textarea>
+                    <div class="error-box-firmDetails">
+                        {{getFieldError('firmAddress')}}
+                    </div>
+                </div>
+                <div>
+                    <button  pRipple label="Submit" (click)="handleSubmit()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="image-box">
+        <img class="images" src="../../assets/mandap-vector.png" alt="login-vector" />
+    </div>
+</div>
+

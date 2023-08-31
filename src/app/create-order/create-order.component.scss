@@ -1,0 +1,13 @@
+// p-dropdown {
+//     .p-dropdown{
+//         width: 100% !important;
+//     }
+
+//   }
+// @import '../../../node_modules/ngx-sharebuttons/button/themes/default';
+.dropdown-above-dialog .ui-dropdown-panel {
+    z-index: 1001; /* Adjust the value as needed */
+  }
+  .order-view{
+    width: 50%;
+}
