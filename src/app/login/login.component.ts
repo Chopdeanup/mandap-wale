@@ -1,9 +1,5 @@
 import { Component } from '@angular/core'
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { MessageService } from 'primeng/api'
 
@@ -26,7 +22,6 @@ export class LoginComponent {
   ngOnInit() {
     this.initLoginForm()
     // this.getFieldError()
-   
   }
 
   initLoginForm() {
@@ -61,14 +56,6 @@ export class LoginComponent {
 
     return ''
   }
-  // show(){
-  //   this.messageService.add({
-  //     // key: 'tl',
-  //     severity: 'info',
-  //     summary: 'Info',
-  //     detail: 'login succesfully',
-  // });
-  // }
 
   handleSubmit() {
     this.isFormSubmit = true

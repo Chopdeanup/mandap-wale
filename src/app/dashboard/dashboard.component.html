@@ -1,11 +1,11 @@
 <div class="navbar card flex align-items-center gap-2">
     <div class="logo">
-        <h4 style="font-size: 25px;">{{getFirstLetters(user.firmName) | uppercase}}</h4>
+        <h4 style="font-size: 25px;">{{getFirstLetters(user?.firmName) | uppercase}}</h4>
     </div>
-    <h3>{{user.firmName | titlecase}}</h3>
+    <h3>{{user?.firmName | titlecase}}</h3>
 </div>
 <div class="add-product">
-    <p>~ Hi {{user.firstName | titlecase}} {{user.lastName | titlecase}}</p>
+    <p>~ Hi {{user?.firstName | titlecase}} {{user?.lastName | titlecase}}</p>
     <p-button label="Add Product" (click)="showDialog()" icon="pi pi-plus-circle"></p-button>
 </div>
 <p-dialog header="Add Product" [(visible)]="visible" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '50vw' }"
