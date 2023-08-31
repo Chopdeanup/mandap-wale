@@ -27,13 +27,11 @@ export class CreateOrderComponent {
   orderListForm!: FormGroup
   productList: any = []
   getOrderDetail: any
-  text:string = "hello"
+  text: string = 'hello'
   getOrder: any = []
   updateArray: any = []
   totalAmount: any
-  constructor(private fb: FormBuilder) {
-    
-  }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.getAllOrder()
@@ -42,7 +40,7 @@ export class CreateOrderComponent {
     console.log('user5465', this.getOrder)
     this.formInit()
   }
-  formInit(){
+  formInit() {
     this.orderListForm = this.fb.group({
       customerName: [''],
       customerAddress: [''],
@@ -54,7 +52,7 @@ export class CreateOrderComponent {
     let localDataForProduct: any = localStorage.getItem('productList') || []
     this.productList = localDataForProduct
     let localDataForOrder: any = localStorage.getItem('orderList') || []
-    this.getOrderDetail =localDataForOrder
+    this.getOrderDetail = localDataForOrder
     this.getOrder = this.getOrderDetail.orders
 
     this.updateArray = this.getOrderDetail?.orders?.map(
@@ -82,7 +80,7 @@ export class CreateOrderComponent {
   }
 
   get orders(): FormArray {
-    return this.orderListForm.get('orders') as FormArray
+    return this.orderListForm?.get('orders') as FormArray
   }
 
   showDialog() {
@@ -97,8 +95,11 @@ export class CreateOrderComponent {
       price: [''],
       id: [this.getOrder?.length],
     })
-    this.orders.push(orderField)
+    console.log("this.orders?",this.orders);
+    
+    this.orders?.push(orderField)
   }
+
   removeOrder(i: number) {
     this.orders.removeAt(i)
   }
@@ -158,14 +159,11 @@ export class CreateOrderComponent {
       let final: any = pdf.output('blob')
 
       this.pdfUrl = URL.createObjectURL(final)
-   
+
       const pdfFile = new Blob([final], { type: 'application/pdf' })
       const blobUrl = URL.createObjectURL(pdfFile)
-    
-      const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(
-        blobUrl,
-      )}`
 
+      const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(blobUrl)}`
 
       window.open(whatsappUrl)
     })
