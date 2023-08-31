@@ -69,7 +69,7 @@ export class LoginComponent {
       return
     }
     localStorage.setItem('userToken', JSON.stringify(this.loginForm.value))
-    let user = JSON.parse(localStorage.getItem('userToken') || '{}')
+    let user = localStorage.getItem('userToken')
     if (user) {
       this.messageService.add({
         severity: 'success',

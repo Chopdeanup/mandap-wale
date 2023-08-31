@@ -35,11 +35,7 @@ export class DashboardComponent {
   }
 
   showDialog() {
-    if(this.productList){
-        // this.addProductForm.patchValue({
-        //   productName: products.productName,
-        // });
-    } 
+
     this.visible = true;
 }
 

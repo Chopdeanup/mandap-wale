@@ -47,9 +47,9 @@ export class CreateOrderComponent {
 
   getAllOrder() {
     let localDataForProduct: any = localStorage.getItem('productList') || []
-    this.productList = JSON.parse(localDataForProduct)
+    this.productList = localDataForProduct
     let localDataForOrder: any = localStorage.getItem('orderList') || []
-    this.getOrderDetail = JSON.parse(localDataForOrder)
+    this.getOrderDetail =localDataForOrder
     this.getOrder = this.getOrderDetail.orders
 
     this.updateArray = this.getOrderDetail.orders?.map(
