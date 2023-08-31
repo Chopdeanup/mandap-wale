@@ -32,11 +32,7 @@ export class CreateOrderComponent {
   updateArray: any = []
   totalAmount: any
   constructor(private fb: FormBuilder) {
-    this.orderListForm = fb.group({
-      customerName: [''],
-      customerAddress: [''],
-      orders: this.fb.array([]),
-    })
+    
   }
 
   ngOnInit() {
@@ -44,6 +40,14 @@ export class CreateOrderComponent {
     this.addOrder()
     console.log('user', this.user)
     console.log('user5465', this.getOrder)
+    this.formInit()
+  }
+  formInit(){
+    this.orderListForm = this.fb.group({
+      customerName: [''],
+      customerAddress: [''],
+      orders: this.fb.array([]),
+    })
   }
 
   getAllOrder() {
