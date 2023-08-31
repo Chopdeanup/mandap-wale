@@ -27,6 +27,7 @@ export class CreateOrderComponent {
   orderListForm!: FormGroup
   productList: any = []
   getOrderDetail: any
+  text:string = "hello"
   getOrder: any = []
   updateArray: any = []
   totalAmount: any
